@@ -1,0 +1,23 @@
+from __future__ import annotations
+
+from ciphernet_ood.evaluation.closed_set import evaluate_closed_set
+from ciphernet_ood.training.checkpointing import load_checkpoint
+from ciphernet_ood.utils.device import get_device
+from common import build_model, graph_files, loaders_from_splits, load_project, load_splits, parse_base_args
+
+
+def main() -> None:
+    parser = parse_base_args()
+    parser.add_argument("--checkpoint", required=True)
+    args = parser.parse_args()
+    config = load_project(args)
+    device = get_device()
+    splits = load_splits(config, args.dataset)
+    loaders = loaders_from_splits(config, splits)
+    model = build_model(config, graph_files(config, args.dataset), device)
+    load_checkpoint(args.checkpoint, model, map_location=device)
+    print(evaluate_closed_set(model, loaders["test"], device))
+
+
+if __name__ == "__main__":
+    main()

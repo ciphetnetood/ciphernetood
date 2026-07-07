@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ciphernet-ood"
+version = "0.1.0"
+description = "CipherNet-OOD for imbalanced and open-world encrypted traffic classification."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "CipherNet-OOD Authors"}
+]
+dependencies = [
+  "torch>=2.1",
+  "torch-geometric>=2.4",
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+  "PyYAML>=6.0",
+  "tqdm>=4.66",
+  "pandas>=2.0",
+  "matplotlib>=3.7",
+  "seaborn>=0.13",
+  "scapy>=2.5"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

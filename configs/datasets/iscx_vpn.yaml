@@ -1,0 +1,6 @@
+dataset:
+  name: iscx_vpn
+  known_classes: [email, chat, stream, ft, voip, p2p, vpn_email, vpn_chat]
+  ood_classes: [vpn_stream, vpn_ft, vpn_voip, vpn_p2p]
+  expected_known_classes: 8
+  expected_ood_classes: 4

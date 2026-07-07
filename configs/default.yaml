@@ -1,0 +1,106 @@
+project:
+  name: ciphernet-ood
+  seed: 42
+  output_dir: outputs
+  checkpoint_dir: checkpoints
+
+data:
+  raw_dir: data/raw
+  session_dir: data/sessions
+  processed_dir: data/processed
+  split_dir: data/splits
+  pcapng_to_pcap: true
+  editcap_path: editcap
+  splitcap_path: SplitCap.exe
+  remove_shortcut_identifiers: true
+  remove_ethernet_header: true
+
+session:
+  max_packets: 25
+  max_payload_bytes: 256
+  byte_normalization: 255.0
+  use_packet_mask: true
+  truncate_long_sessions: true
+  pad_short_sessions: true
+
+features:
+  include_payload: true
+  include_size: true
+  include_direction: true
+  include_interarrival_time: true
+  include_packet_position: true
+  log_size: true
+  log_interarrival_time: true
+
+graph:
+  temporal_edges: true
+  direction_edges: true
+  burst_edges: true
+  size_similarity_edges: true
+  time_similarity_edges: true
+  size_similarity_threshold: 0.10
+  time_similarity_threshold: 0.10
+  add_self_loops: true
+
+model:
+  hidden_dim: 64
+  num_layers: 5
+  num_heads: 4
+  num_prototypes: 3
+  readout: mean
+  projection_dim: 64
+  dropout: 0.1
+  normalize_embeddings: true
+
+cfml:
+  feature_scale: 30.0
+  base_margin: 0.2
+  beta: 0.75
+  gamma: 0.76
+  eta: 0.85
+  kappa: 0.30
+  delta: 0.30
+  margin_min: 0.05
+  margin_max: 0.80
+  lambda_intra: 0.10
+  lambda_inter: 0.05
+
+ood:
+  selected_layers: [1, 2, 3, 4, 5]
+  layer_weights: [0.10, 0.15, 0.20, 0.25, 0.30]
+  covariance_regularization: 0.001
+  threshold_percentile: 95
+  prototype_temperature: 10.0
+  gram_normalization_eps: 0.00000001
+  use_upper_triangle: true
+
+training:
+  optimizer: adam
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  batch_size: 32
+  max_epochs: 500
+  early_stopping_patience: 10
+  num_workers: 0
+  mixed_precision: false
+  monitor_metric: macro_f1
+
+splits:
+  closed_set:
+    train: 0.70
+    val: 0.10
+    test: 0.20
+  open_world:
+    train_known_only: true
+    val_known_only: true
+    ood_test_heldout_classes: true
+    known_classes: []
+    ood_classes: []
+
+evaluation:
+  repeats: 20
+  metrics:
+    classification: [macro_precision, macro_recall, macro_f1, weighted_f1, confusion_matrix]
+    imbalance: [minority_f1, majority_f1, f1_gap, worst_class_recall, g_mean]
+    ood: [auroc, aupr_ood, fpr_at_95_tpr, f1_ood]
+    efficiency: [params, model_size_mb, latency_cpu, latency_gpu, throughput]

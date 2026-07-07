@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "CipherNet-OOD: Open-World Encrypted Traffic Classification via CipherFlow Manifold Learning and CipherProtoGram Detection under Class Imbalance"
+message: "If you use this repository, please cite the manuscript."
+type: software
+authors:
+  - family-names: Fardous
+    given-names: Shamaila
+  - family-names: Sharif
+    given-names: Kashif
+  - family-names: Li
+    given-names: Fan
+  - family-names: Manjotho
+    given-names: Ali Asghar
+repository-code: "https://github.com/ciphernet-ood/ciphernet-ood"
+license: MIT

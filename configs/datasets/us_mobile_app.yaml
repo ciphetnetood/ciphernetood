@@ -1,0 +1,6 @@
+dataset:
+  name: us_mobile_app
+  known_classes: []
+  ood_classes: []
+  expected_known_classes: 35
+  expected_ood_classes: 24

@@ -1,0 +1,6 @@
+dataset:
+  name: iscx_tor
+  known_classes: []
+  ood_classes: []
+  expected_known_classes: 10
+  expected_ood_classes: 6

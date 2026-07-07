@@ -1,0 +1,5 @@
+dataset:
+  name: mendeley
+  known_classes: []
+  ood_classes: []
+  scenarios: [known_category_known_application, known_category_unknown_application, unknown_category_unknown_application]

@@ -1,0 +1,6 @@
+dataset:
+  name: vnat
+  known_classes: []
+  ood_classes: []
+  expected_known_classes: 5
+  expected_ood_classes: 3
