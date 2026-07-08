@@ -1,4 +1,5 @@
 # CipherNet-OOD
+![Alt text](assets/fig_model.png?raw=true "Model")
 
 Implementation of **CipherNet-OOD: Open-World Encrypted Traffic Classification via CipherFlow Manifold Learning and CipherProtoGram Detection under Class Imbalance**.
 
