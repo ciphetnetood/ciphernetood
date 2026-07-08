@@ -3,6 +3,11 @@
 
 Implementation of **CipherNet-OOD: Open-World Encrypted Traffic Classification via CipherFlow Manifold Learning and CipherProtoGram Detection under Class Imbalance**.
 
+CipherNet-OOD is a unified framework for imbalanced and open-world encrypted traffic classification without plaintext payloads or labeled OOD samples.
+It represents packet captures as encrypted session graphs, learns discriminative payload–behavior manifolds using traffic-mode prototypes and angular margins, and detects unseen traffic through prototype-conditioned Gram signatures.
+Experiments on five benchmark datasets show strong gains in weighted F1, G-Mean, minority-class performance, and zero-shot OOD detection over state-of-the-art baselines.
+
+
 The repository implements the three-stage framework described in the manuscript:
 
 1. Session representation from encrypted traffic captures.
