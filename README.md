@@ -14,6 +14,10 @@ The repository implements the three-stage framework described in the manuscript:
 2. CipherFlow Manifold Learning (CFML) with traffic-mode prototypes and traffic-conditioned angular margins.
 3. CipherProtoGram OOD Detection (CPG-OOD) using prototype-conditioned Gram signatures.
 
+![Alt text](assets/fig_distributions.png?raw=true "Dataset Distributions and Imbalance Performances")
+![Alt text](assets/fig_session_graph.png?raw=true "Session Graph")
+
+
 ## Installation
 
 ```bash
@@ -34,6 +38,9 @@ data/sessions/<dataset>/...
 data/processed/<dataset>/*.pt
 data/splits/<dataset>/*.json
 ```
+
+![Alt text](assets/fig_imbalance_robustness_metrics.png?raw=true "Imbalance Robustness")
+
 
 ## Quick Start
 
@@ -66,6 +73,9 @@ Evaluate open-world OOD detection:
 ```bash
 python scripts/evaluate_open_world.py --config configs/default.yaml --dataset iscx_vpn --checkpoint checkpoints/iscx_vpn/best.pt --signatures checkpoints/iscx_vpn/cpg_signatures.pt
 ```
+
+![Alt text](assets/fig_ood_detection_line_comparison.png?raw=true "OOD Detection Line Comparison")
+![Alt text](assets/fig_imbalance_severity_ablation.png?raw=true "Imbalance Severity Ablation")
 
 ## Reproducibility Defaults
 
